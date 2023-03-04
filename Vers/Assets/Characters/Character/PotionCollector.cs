@@ -36,9 +36,12 @@ public class PotionCollector : MonoBehaviour
 
     }
 
-    public void SetAllCollectablePotions()
+public void SetAllCollectablePotions()
 {
-     AllCollectablePotions.text = AllPotionsStart.ToString();
+    if (AllCollectablePotions != null)
+    {
+        AllCollectablePotions.text = AllPotionsStart.ToString();
+    }
 }
  
 public void CurrentCollectedPotions()

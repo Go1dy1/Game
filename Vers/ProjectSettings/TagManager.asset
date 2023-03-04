@@ -8,6 +8,11 @@ TagManager:
   - Enemy
   - Ground
   - Enemy Point
+  - Point1
+  - Point2
+  - DoubleJump
+  - Potion
+  - Finish zone
   layers:
   - Default
   - TransparentFX

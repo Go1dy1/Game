@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 904986432979752753}
   - component: {fileID: 904986432979752754}
   - component: {fileID: 904986432979752749}
-  - component: {fileID: 8504624945256709584}
   m_Layer: 0
   m_Name: New Camera
   m_TagString: Untagged
@@ -243,21 +242,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &8504624945256709584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904986432979752758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f877be90b5a00e4cb283c0aa990ef29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Camera: {fileID: 904986432979752755}
-  speed_Camera: 0.1
 --- !u!1 &904986433961701104
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +305,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.0168225, y: 1}
+    m_SensorSize: {x: 1.0200334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Fly_Patrol : MonoBehaviour
 {
-    
+    Animator animator_fly;
     public float speedEnemy;
     public Transform fly_Point;
     public int positionEnemy;
@@ -18,19 +18,13 @@ public class Fly_Patrol : MonoBehaviour
     bool chill = false;
     bool angry = false;
     bool refreshPosition = false;
-    public Transform Enemy;
     private float timeInSec = 10f;
     public float AgresiveLimit ;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
-        {
-            Destroy(collision.gameObject);
-            SceneManager.LoadScene("SampleScene");
-
-        }
+       
         if (collision.gameObject.tag=="Enemy Point")
         {
             refreshPosition = false;
@@ -44,6 +38,8 @@ public class Fly_Patrol : MonoBehaviour
 
     void Start()
     {
+        animator_fly= GetComponent<Animator>();
+
         player = GameObject.FindGameObjectWithTag("Playerr").transform;
         
         Chill();
@@ -52,7 +48,7 @@ public class Fly_Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       animator_fly.SetBool("angry",angry);
         if (Vector2.Distance(transform.position, point.position) < positionEnemy && angry == false && refreshPosition ==false) // chill
         {
             chill = true;

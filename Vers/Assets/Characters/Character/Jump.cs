@@ -11,6 +11,24 @@ public class Jump : MonoBehaviour
     public float FallAfterJump = 2f;
     bool animation_check = false;
     
+    IEnumerator offParticle()
+    {
+        yield return new WaitForSeconds(0.2f);
+       FallAfterJump= FallAfterJump+1.5f;
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    
+        if (collision.tag == "DoubleJump")
+        {
+            jumper.AddForce(direction*jumpSpeed*3,ForceMode2D.Force);
+            
+            FallAfterJump= FallAfterJump-1.5f;
+             StartCoroutine(offParticle());
+        }
+        
+    }
 
    // private float falling = 0.02f;
     void Start()
@@ -94,4 +112,5 @@ void OnLanding ()
     {
         pplatform= Physics2D.OverlapCircle(groundCheck.position, RadiusGroundCheck, Platform);
     }
+
 }

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Patrol : MonoBehaviour
 {
+    Animator animator_ground;
     public float speedEnemy;
-
     public int positionEnemy;
     public Transform point;
     bool moveingRight;
@@ -18,6 +18,11 @@ public class Patrol : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+         if (collision.gameObject.tag=="Enemy Point")
+        {
+            refreshPosition = false;
+            chill = true;
+        }
         if (collision.gameObject.name == "Player")
         {
             Destroy(collision.gameObject);
@@ -30,12 +35,15 @@ public class Patrol : MonoBehaviour
 
     void Start()
     {
+        animator_ground= GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Playerr").transform;
+        Chill();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator_ground.SetBool("angry",angry);
         if (Vector2.Distance(transform.position, point.position)< positionEnemy&& angry == false)
         {
            chill = true;
@@ -46,53 +54,32 @@ public class Patrol : MonoBehaviour
             chill = false;
             refreshPosition = false;
         }
-        if (Vector2.Distance(transform.position, player.position) > stopingDistance)
+        if (Vector2.Distance(transform.position, player.position) > stopingDistance )
         {
-           refreshPosition = true;
+            refreshPosition = true;
             angry = false;
+           
+            
         }
-        if (angry)
-        {
-            //Debug.Log("angry");
-        }
-        else
-        {
-            //Debug.Log(" not angry");
-        }
-
         if (chill == true)
-        {
-            Chill();
-        }
+        { Chill();}
        else if (angry == true)
-        {
-            Angry();
-        }
+        { Angry();}
         else if (refreshPosition == true)
-        {
-            RefreshPosition();
-        }
+        { RefreshPosition();}
         
     }
     void Chill()
     {
-        if (transform.position.x> point.position.x + positionEnemy)
-        {
-            moveingRight = false;
-        }
-        else if(transform.position.x< point.position.x - positionEnemy)
-        {
-            moveingRight=true;
-        }
-
+        if (transform.position.x > point.position.x + positionEnemy)
+        { moveingRight = false;}
+        else if (transform.position.x < point.position.x - positionEnemy)
+        { moveingRight = true;}
+        
         if (moveingRight)
-        {
-            transform.position = new Vector2(transform.position.x + speedEnemy * Time.deltaTime, transform.position.y);
-        }
+        {transform.position = new Vector2(transform.position.x + speedEnemy * Time.deltaTime, transform.position.y);}
         else
-        {
-            transform.position = new Vector2(transform.position.x - speedEnemy * Time.deltaTime, transform.position.y);
-        }
+        { transform.position = new Vector2(transform.position.x - speedEnemy * Time.deltaTime, transform.position.y);}
     }
     void Angry()
     {
@@ -101,8 +88,7 @@ public class Patrol : MonoBehaviour
     }
     void RefreshPosition()
     {
-        transform.position = Vector2.MoveTowards(transform.position,point.position, speedEnemy * Time.deltaTime);
-    }
+transform.position = Vector2.MoveTowards(transform.position, point.position, speedEnemy * Time.deltaTime);    }
 
     
 }
