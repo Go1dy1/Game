@@ -18,7 +18,7 @@ public class Charge : MonoBehaviour
         Charged();
 
     }
-    public bool ReflectRight = true;
+    private bool ReflectRight = true;
     void ReflectRightbool()
     {
         if ((moveVector.x>0 && !ReflectRight)|| moveVector.x< 0 && ReflectRight)

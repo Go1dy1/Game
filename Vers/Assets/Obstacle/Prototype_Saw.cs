@@ -13,9 +13,10 @@ public class Prototype_Saw : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+       if (collision.tag == "Playerr")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         }
     }
 

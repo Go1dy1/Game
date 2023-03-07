@@ -9,7 +9,7 @@ public class PotionCollector : MonoBehaviour
     public Text AllCollectablePotions; //Общее количество Potion на уровне
     public static float CollectPotions; //Считаем собранные Potion
     private float AllPotionsStart;  //Считаем все Potion находящиеся на уровне
-    public bool checkPotion= false;
+    private bool checkPotion= false;
     void Awake()
     {
         AllPotionsStart =GameObject.FindGameObjectsWithTag("Potion").Length;
