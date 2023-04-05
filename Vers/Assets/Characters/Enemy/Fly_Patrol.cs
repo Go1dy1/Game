@@ -19,7 +19,7 @@ public class Fly_Patrol : MonoBehaviour
     bool angry = false;
     bool refreshPosition = false;
     private float timeInSec = 10f;
-    public float AgresiveLimit ;
+    
 
 
     private void OnTriggerEnter2D(Collider2D collision)

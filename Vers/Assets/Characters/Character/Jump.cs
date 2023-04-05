@@ -17,6 +17,12 @@ public class Jump : MonoBehaviour
        FallAfterJump= FallAfterJump+1.5f;
         
     }
+    IEnumerator offParticle1()
+    {
+        yield return new WaitForSeconds(0.2f);
+       FallAfterJump= FallAfterJump+2.5f;
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
     
@@ -26,6 +32,14 @@ public class Jump : MonoBehaviour
             
             FallAfterJump= FallAfterJump-1.5f;
              StartCoroutine(offParticle());
+        }
+        
+        if (collision.tag == "DoubleJumpPlatform")
+        {
+            jumper.AddForce(direction*jumpSpeed*6,ForceMode2D.Force);
+            
+            FallAfterJump= FallAfterJump-2.5f;
+             StartCoroutine(offParticle1());
         }
         
     }
@@ -39,7 +53,7 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( IsGround && !pplatform && LockJump == false)
+        if ( IsGround )
     { animation_check = false;}
     else{animation_check = true;}
         
@@ -48,7 +62,7 @@ public class Jump : MonoBehaviour
         IsJump();
 
 
-        PlatformCheck();
+        //PlatformCheck();
 
         GroundCheck();
 
@@ -56,10 +70,7 @@ public class Jump : MonoBehaviour
         
     }
 
-void OnLanding ()
-{
-    animator.SetBool("jump",false);
-}
+
    public bool IsGround= false ;
    public Transform groundCheck;
    public float RadiusGroundCheck = 0.5f;
@@ -108,9 +119,9 @@ void OnLanding ()
 
         IsGround = Physics2D.OverlapCircle(groundCheck.position, RadiusGroundCheck, Ground);
     }
-    void PlatformCheck()
+    /*void PlatformCheck()
     {
         pplatform= Physics2D.OverlapCircle(groundCheck.position, RadiusGroundCheck, Platform);
     }
-
+*/
 }
