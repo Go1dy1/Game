@@ -10,7 +10,16 @@ public class Jump : MonoBehaviour
     public float jumpSpeed;
     public float FallAfterJump = 2f;
     bool animation_check = false;
-    
+   public bool IsGround= false ;
+   public Transform groundCheck;
+   public float RadiusGroundCheck = 0.5f;
+   public LayerMask Ground;
+    public LayerMask Platform;
+    bool ground= false;
+    bool platform= false;
+    public bool pplatform= false;
+
+
     IEnumerator offParticle()
     {
         yield return new WaitForSeconds(0.2f);
@@ -69,16 +78,6 @@ public class Jump : MonoBehaviour
         animator.SetBool("jump",animation_check);
         
     }
-
-
-   public bool IsGround= false ;
-   public Transform groundCheck;
-   public float RadiusGroundCheck = 0.5f;
-   public LayerMask Ground;
-    public LayerMask Platform;
-    bool ground= false;
-    bool platform= false;
-    public bool pplatform= false;
 
 
 
